@@ -1,0 +1,95 @@
+﻿<Window x:Class="DonationAnalyticsDashboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DonationAnalyticsDashboard"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Filter Section -->
+        <StackPanel Orientation="Horizontal"
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            Margin="0,0,0,10">
+
+            <TextBlock Text="From:"
+               VerticalAlignment="Center"
+               Margin="0,0,5,0"/>
+
+            <DatePicker x:Name="FromDatePicker"
+                Width="140"
+                Margin="0,0,15,0"/>
+
+            <TextBlock Text="To:"
+               VerticalAlignment="Center"
+               Margin="0,0,5,0"/>
+
+            <DatePicker x:Name="ToDatePicker"
+                Width="140"
+                Margin="0,0,15,0"/>
+
+            <Button Content="Apply Filter"
+            Padding="10,5"
+            Click="ApplyFilter_Click"/>
+        </StackPanel>
+
+        <!-- KPI Section -->
+        <StackPanel Orientation="Horizontal"
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,15">
+
+            <Border Background="#FFEFEFEF"
+                Padding="20"
+                Margin="10"
+                CornerRadius="8">
+                <StackPanel>
+                    <TextBlock Text="Pending"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="PendingText"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="#FFEFEFEF"
+                Padding="20"
+                Margin="10"
+                CornerRadius="8">
+                <StackPanel>
+                    <TextBlock Text="Distributed"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="DistributedText"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+
+        <!-- Raw Donations -->
+        <DataGrid x:Name="DonationsGrid"
+              AutoGenerateColumns="True"
+              Grid.Row="2"
+              Margin="0,0,0,10"/>
+
+        <!-- Category Summary -->
+        <DataGrid x:Name="CategorySummaryGrid"
+              AutoGenerateColumns="True"
+              Grid.Row="3"/>
+    </Grid>
+</Window>
